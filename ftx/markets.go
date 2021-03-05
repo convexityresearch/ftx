@@ -4,7 +4,7 @@ import (
 	"log"
 	"strconv"
 
-	"github.com/convexity-research/ftx/api"
+	"github.com/convexityresearch/ftx/ftx/api"
 )
 
 // HistoricalPrices is an alias.
