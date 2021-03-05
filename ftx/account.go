@@ -14,7 +14,7 @@ func (client *Client) GetPositions(showAvgPrice bool) (Positions, error) {
 	var positions Positions
 	resp, err := client._get("positions", []byte(""))
 	if err != nil {
-		log.Printf("Error GetPositions", err)
+		log.Println("Error GetPositions", err)
 		return positions, err
 	}
 	err = _processResponse(resp, &positions)

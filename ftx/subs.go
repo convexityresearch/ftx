@@ -27,7 +27,7 @@ func (client *Client) GetSubAccounts() (SubAccountsList, error) {
 	var SubAccounts SubAccountsList
 	resp, err := client._get("SubAccounts", []byte(""))
 	if err != nil {
-		log.Printf("Error GetSubAccounts", err)
+		log.Println("Error GetSubAccounts", err)
 		return SubAccounts, err
 	}
 	err = _processResponse(resp, &SubAccounts)
@@ -39,12 +39,12 @@ func (client *Client) CreateSubAccount(nickname string) (SubAccount, error) {
 	var SubAccount SubAccount
 	requestBody, err := json.Marshal(map[string]string{"nickname": nickname})
 	if err != nil {
-		log.Printf("Error CreateSubAccount", err)
+		log.Println("Error CreateSubAccount", err)
 		return SubAccount, err
 	}
 	resp, err := client._post("SubAccounts", requestBody)
 	if err != nil {
-		log.Printf("Error CreateSubAccount", err)
+		log.Println("Error CreateSubAccount", err)
 		return SubAccount, err
 	}
 	err = _processResponse(resp, &SubAccount)
@@ -56,12 +56,12 @@ func (client *Client) ChangeSubAccountName(nickname string, newNickname string) 
 	var changeSubAccount Response
 	requestBody, err := json.Marshal(map[string]string{"nickname": nickname, "newNickname": newNickname})
 	if err != nil {
-		log.Printf("Error ChangeSubAccountName", err)
+		log.Println("Error ChangeSubAccountName", err)
 		return changeSubAccount, err
 	}
 	resp, err := client._post("SubAccounts/update_name", requestBody)
 	if err != nil {
-		log.Printf("Error ChangeSubAccountName", err)
+		log.Println("Error ChangeSubAccountName", err)
 		return changeSubAccount, err
 	}
 	err = _processResponse(resp, &changeSubAccount)
@@ -73,12 +73,12 @@ func (client *Client) DeleteSubAccount(nickname string) (Response, error) {
 	var deleteSubAccount Response
 	requestBody, err := json.Marshal(map[string]string{"nickname": nickname})
 	if err != nil {
-		log.Printf("Error DeleteSubAccount", err)
+		log.Println("Error DeleteSubAccount", err)
 		return deleteSubAccount, err
 	}
 	resp, err := client._delete("SubAccounts", requestBody)
 	if err != nil {
-		log.Printf("Error DeleteSubAccount", err)
+		log.Println("Error DeleteSubAccount", err)
 		return deleteSubAccount, err
 	}
 	err = _processResponse(resp, &deleteSubAccount)
@@ -90,7 +90,7 @@ func (client *Client) GetSubAccountBalances(nickname string) (SubAccountBalances
 	var SubAccountBalances SubAccountBalances
 	resp, err := client._get("SubAccounts/"+nickname+"/balances", []byte(""))
 	if err != nil {
-		log.Printf("Error SubAccountBalances", err)
+		log.Println("Error SubAccountBalances", err)
 		return SubAccountBalances, err
 	}
 	err = _processResponse(resp, &SubAccountBalances)
@@ -107,12 +107,12 @@ func (client *Client) TransferSubAccounts(coin string, size float64, source stri
 		"destination": destination,
 	})
 	if err != nil {
-		log.Printf("Error TransferSubAccounts", err)
+		log.Println("Error TransferSubAccounts", err)
 		return transferSubAccounts, err
 	}
 	resp, err := client._post("SubAccounts/transfer", requestBody)
 	if err != nil {
-		log.Printf("Error TransferSubAccounts", err)
+		log.Println("Error TransferSubAccounts", err)
 		return transferSubAccounts, err
 	}
 	err = _processResponse(resp, &transferSubAccounts)
