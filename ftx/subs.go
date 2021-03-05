@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"log"
 
-	"github.com/convexity-research/ftx/ftx/api"
+	"github.com/convexityresearch/ftx/ftx/api"
 )
 
 // SubAccountsList is an alias.
